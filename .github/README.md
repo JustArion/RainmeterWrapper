@@ -15,7 +15,7 @@ internal sealed class MyImplementation : AbstractWrapper
   
     public override void CommandReceived(string args)  
     {  
-		API.Log(API.LogType.Notice, args);
+	API.Log(API.LogType.Notice, args);
     }  
   
     protected override void OnUpdate() => Return("Hello");  
