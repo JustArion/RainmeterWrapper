@@ -20,7 +20,6 @@
             TryGetInstance(instanceID, out var instance); // We know it's not null since the ID is valid.
             data = GCHandle.ToIntPtr(GCHandle.Alloc(instanceID)); // Possible expansion of storing meta-data into the pointer too such as number of reloads, and the instance itself. Hashtable or something.
             instance.Pointer = data;
-            // instance.API.Log(API.LogType.Debug, $"ID: {instanceID}");
         }
 
         private static int InjectInstance(API meter)
@@ -160,7 +159,7 @@
             }
         }
 
-        private void RaiseException(Exception e) => API?.Log(API.LogType.Error, $"Unhandled exception: {e}");
+        private void RaiseException(Exception e) => API?.Log(API.LogType.Error, $"Unhandled Exception: {e}");
         private void ExceptionWrapper(ref double maxValue)
         {
             try
