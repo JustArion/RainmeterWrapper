@@ -7,7 +7,7 @@ To use the wrapper, simply inherit either [Base Wrapper](https://github.com/Ario
 ```cs
 internal sealed class MyImplementation : AbstractWrapper  
 {  
- public override void Reload(ref double maxValue)  
+ 	public override void Reload(ref double maxValue)  
     {  
         // Here you can write your code that gets executed on Reload.
     }  
@@ -15,7 +15,7 @@ internal sealed class MyImplementation : AbstractWrapper
   
     public override void CommandReceived(string args)  
     {  
-	API.Log(API.LogType.Notice, args);
+		API.Log(API.LogType.Notice, args);
     }  
   
     protected override void OnUpdate() => Return("Hello");  
