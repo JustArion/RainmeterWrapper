@@ -26,7 +26,7 @@
         {
             var pluginType = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(t => typeof(BaseWrapper).IsAssignableFrom(t) && !t.IsAbstract);
             if (pluginType == null)
-                return default;
+                return -1;
             try
             {
                 var pluginInstance = (BaseWrapper)Activator.CreateInstance(pluginType);
