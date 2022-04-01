@@ -59,3 +59,6 @@ public abstract class AbstractWrapper : BaseWrapper
 }
 ```
 
+###### Additional Information
+
+We are currently limited in **when** we return. A bang may be executed and if needed, we can alter our return value, but that value would only be returned on the **next** update tick, not immediately unless the update rate it set incredibly high (Update Rate directly translates into ms).
