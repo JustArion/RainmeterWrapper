@@ -3,6 +3,7 @@
 
 ###### 📝Usage:
 To use the wrapper, simply inherit either [Base Wrapper](https://github.com/Arion-Kun/Rainmeter/blob/main/src/BaseWrapper.cs) or [AbstractWrapper](https://github.com/Arion-Kun/Rainmeter/blob/main/src/AbstractWrapper.cs) and override the base implementation of the method.
+
 `Example:`
 ```cs
 internal sealed class MyImplementation : AbstractWrapper  
