@@ -1,4 +1,4 @@
-﻿namespace Dawn.Rainmeter
+namespace Dawn.Rainmeter
 {
     using System;
     using System.Linq;
@@ -134,12 +134,17 @@
 
         protected BaseWrapper() => AppDomain.CurrentDomain.UnhandledException += RaiseUnhandledException;
 
+        public static Action<Exception> ExceptionRaised;
+
         /// <summary>
         /// If a fatal exception occurs, this will be called, the Rainmeter program may be terminated if 'Fatal'.
         /// We lower the chances of Fatal exceptions by employing Exception Wrappers
         /// </summary>
-        private void RaiseUnhandledException(object sender, UnhandledExceptionEventArgs e) 
-            => API?.Log(API.LogType.Error, $"[{(e.IsTerminating ? "Fatal" : "Unhandled")}] Exception: {e.ExceptionObject as Exception}");
+        private void RaiseUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            API?.Log(API.LogType.Error, $"[{(e.IsTerminating ? "Fatal" : "Unhandled")}] Exception: {e.ExceptionObject as Exception}");
+            ExceptionRaised?.Invoke(e.ExceptionObject as Exception);
+        }
 
         private void ExceptionWrapper(Action act)
         {
@@ -159,7 +164,11 @@
             }
         }
 
-        private void RaiseException(Exception e) => API?.Log(API.LogType.Error, $"Unhandled Exception: {e}");
+        private void RaiseException(Exception e)
+        {
+            API?.Log(API.LogType.Error, $"Unhandled Exception: {e}");
+            ExceptionRaised?.Invoke(e);
+        }
         private void ExceptionWrapper(ref double maxValue)
         {
             try
