@@ -21,7 +21,7 @@ internal sealed class MyImplementation : AbstractWrapper
     protected override void OnUpdate() => Return("Hello");  
 }
 ```
-`Note:` The abstract Wrapper can only return string types or number value types that can be converted through the `Convert.ToDouble()` method.
+`Note:` The abstract Wrapper can only return string types or number value types (which will be converted to a double using the `Convert.ToDouble()` method (plan your numbers accordingly as either a string or a number, floating point values may be lost if returned as a non-string))
 
 Finally: Build your solution and export the .dll to be converted into a recognized Rainmeter .dll.
 A build event can be set up in your project to do this.
